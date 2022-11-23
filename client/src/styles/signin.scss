@@ -1,0 +1,16 @@
+.signin_container {
+  margin: auto;
+  width: 60vh;
+  height: 75vh;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.signin_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}

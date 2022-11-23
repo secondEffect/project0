@@ -1,0 +1,33 @@
+:root {
+  /* Color */
+  --white-color: #fff;
+  --custom-color: rgb(55, 212, 31);
+  /* Size*/
+  --padding: 12px;
+
+  /* Font Size*/
+  --font-large: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+// button {
+//   width: 85px;
+//   height: 40px;
+//   background: transparent;
+//   border-radius: 5px;
+// }
+
+// div {
+//   text-align: center;
+// }
+
+// ul {
+//   list-style: none;
+// }

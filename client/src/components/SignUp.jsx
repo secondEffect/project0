@@ -1,6 +1,6 @@
 import { Button, TextField } from '@mui/material';
 import { useState } from 'react';
-import { authService } from '..';
+import { authService } from '../index';
 
 export const SignUp = () => {
   const [userInfo, setUserInfo] = useState({});
@@ -17,9 +17,16 @@ export const SignUp = () => {
     authService.signUp().then((data) => console.log(data));
   };
 
-  function checkEmail(email) {
+  function checkEmail(e) {
     // data request => checkEmail
-    return;
+    if (!userInfo.email) return alert('email을 입력 해주세요.');
+    console.log(userInfo.email);
+    authService.checkEmail(userInfo.email).then((check) => {
+      console.log(check);
+      check.isOverlap
+        ? alert('이미 가입된 이메일주소입니다.')
+        : alert('사용 가능한 이메일주소입니다');
+    });
   }
 
   function isError(userInfo) {
@@ -31,10 +38,11 @@ export const SignUp = () => {
     if (!emailRegex.test(email)) {
       errors.email = '이메일 양식이 맞지 안습니다.';
     }
-    // TODO:
-    // if(checkEmail()){
-    // errors.email = '이미 가입된 이메일 입니다'
-    // }
+
+    if (checkEmail()) {
+      errors.email = '이미 가입된 이메일 입니다';
+    }
+
     if (password !== confirmPassword) {
       errors.password = '비밀번호가 일치하지 않습니다.';
     }
@@ -49,23 +57,26 @@ export const SignUp = () => {
 
   return (
     <>
-      <div className='signin_container'>
-        <form className='signin_form' onSubmit={handleSubmit} action=''>
+      <div className='signup_container'>
+        <form className='signup_form' onSubmit={handleSubmit}>
           <p>회원가입</p>
-          <TextField
-            required
-            name='email'
-            autoComplete='username'
-            label='email'
-            variant='outlined'
-            placeholder='user@google.com'
-            onChange={handleChange}
-          />
+          <div>
+            <TextField
+              required
+              name='email'
+              label='email'
+              variant='outlined'
+              placeholder='user@google.com'
+              onChange={handleChange}
+            />
+            <Button onClick={checkEmail} variant='outlined'>
+              중복확인
+            </Button>
+          </div>
           <TextField
             required
             type='password'
             name='password'
-            autoComplete='new-password'
             label='비밀번호'
             variant='outlined'
             onChange={handleChange}
@@ -74,7 +85,6 @@ export const SignUp = () => {
             required
             type='password'
             name='confirmPassword'
-            autoComplete='new-password'
             label='비밀번호 확인'
             variant='outlined'
             onChange={handleChange}

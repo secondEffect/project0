@@ -1,11 +1,11 @@
 import { Header } from '../components/Header';
-import { SignUp } from '../components/SignUp';
+import { SignIn } from '../components/SignIn';
 
-export const SignUpPage = () => {
+export const SignInPage = () => {
   return (
     <>
       <Header />
-      <SignUp />
+      <SignIn />
     </>
   );
 };

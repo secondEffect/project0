@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Main } from '../pages/Main';
 import { NotFound } from '../pages/NotFound';
+import { SignInPage } from '../pages/SignInPage';
 import { SignUpPage } from '../pages/SignUpPage';
 
 export const Router = () => {
@@ -8,8 +9,9 @@ export const Router = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='asdfs' element={<Main />} />
-          <Route path='/' element={<SignUpPage />} />
+          <Route path='/' element={<Main />} />
+          <Route path='/signup' element={<SignUpPage />} />
+          <Route path='/signin' element={<SignInPage />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>

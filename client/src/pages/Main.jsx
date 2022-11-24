@@ -4,7 +4,7 @@ export const Main = () => {
   return (
     <>
       <Header></Header>
-      <div>Main Page</div>
+      <main>Main Page</main>
     </>
   );
 };
